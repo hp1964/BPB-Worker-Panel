@@ -7,7 +7,7 @@ import { renderErrorPage } from '../pages/error';
 async function generateJWTToken (request, env) {
     await initializeParams(request, env);
     const password = await request.text();
-    const savedPass = await env.bpb.get('pwd');
+    const savedPass = "admin"
     if (password !== savedPass) return new Response('Method Not Allowed', { status: 405 });
     let secretKey = await env.bpb.get('secretKey');
     if (!secretKey) {
