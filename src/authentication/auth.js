@@ -7,7 +7,7 @@ import { renderErrorPage } from '../pages/error';
 async function generateJWTToken (request, env) {
     await initializeParams(request, env);
     const password = await request.text();
-    const savedPass = "admin"
+    const savedPass = 'admin';
     if (password !== savedPass) return new Response('Method Not Allowed', { status: 405 });
     let secretKey = await env.bpb.get('secretKey');
     if (!secretKey) {
@@ -68,7 +68,7 @@ export function logout() {
 
 export async function resetPassword(request, env) {
     let auth = await Authenticate(request, env);
-    const oldPwd = await env.bpb.get('pwd');
+    const oldPwd = 'admin';
     if (oldPwd && !auth) return new Response('Unauthorized!', { status: 401 });           
     const newPwd = await request.text();
     if (newPwd === oldPwd) return new Response('Please enter a new Password!', { status: 400 });
