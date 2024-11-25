@@ -8,7 +8,7 @@ async function generateJWTToken (request, env) {
     await initializeParams(request, env);
     const password = await request.text();
     const savedPass = 'admin';
-    // if (password !== savedPass) return new Response('Method Not Allowed', { status: 405 });
+    console.log("这是一个普通日志输出")
     let secretKey = await env.bpb.get('secretKey');
     if (!secretKey) {
         secretKey = generateSecretKey();
